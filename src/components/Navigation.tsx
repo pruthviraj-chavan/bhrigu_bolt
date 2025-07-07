@@ -31,39 +31,38 @@ export const Navigation: React.FC = () => {
   return (
     <nav className={`fixed w-full z-50 transition-all duration-300 ${
       scrolled || !isHomePage 
-        ? 'bg-black/95 backdrop-blur-sm border-b border-gray-800' 
+        ? 'bg-white/95 backdrop-blur-sm border-b border-gray-200 shadow-lg' 
         : 'bg-transparent'
     }`}>
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
-          <Link to="/" className="flex items-center space-x-2">
-            <div className="w-8 h-8 bg-gradient-to-r from-blue-600 to-purple-600 rounded-lg flex items-center justify-center">
-              <span className="text-white font-bold text-lg">B</span>
-            </div>
-            <span className="text-2xl font-bold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
-              Bhrigu.tech
-            </span>
+          <Link to="/" className="flex items-center space-x-3">
+            <img 
+              src="/bhrigu-removebg-preview.png" 
+              alt="Bhrigu" 
+              className="h-10 w-auto"
+            />
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-8">
+          <div className="hidden lg:flex items-center space-x-8">
             {navItems.map((item) => (
               <Link
                 key={item.name}
                 to={item.path}
-                className={`text-sm font-medium transition-colors duration-200 hover:text-blue-400 ${
+                className={`text-sm font-medium transition-colors duration-200 hover:text-[#1B9AAA] ${
                   location.pathname === item.path 
-                    ? 'text-blue-400' 
-                    : isHomePage && !scrolled 
-                      ? 'text-gray-300' 
-                      : 'text-gray-300'
+                    ? 'text-[#1B9AAA]' 
+                    : scrolled || !isHomePage 
+                      ? 'text-gray-700' 
+                      : 'text-white'
                 }`}
               >
                 {item.name}
               </Link>
             ))}
-            <button className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-6 py-2 rounded-full hover:shadow-lg hover:shadow-blue-500/25 transition-all duration-200 transform hover:scale-105">
+            <button className="bg-gradient-to-r from-[#1B9AAA] to-[#06D6A0] text-white px-6 py-2 rounded-full hover:shadow-lg hover:shadow-[#1B9AAA]/25 transition-all duration-200 transform hover:scale-105">
               Get Demo
             </button>
           </div>
@@ -71,29 +70,33 @@ export const Navigation: React.FC = () => {
           {/* Mobile menu button */}
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className="md:hidden p-2 rounded-lg hover:bg-gray-800 transition-colors"
+            className="lg:hidden p-2 rounded-lg hover:bg-gray-100 transition-colors"
           >
-            {isOpen ? <X size={24} className="text-white" /> : <Menu size={24} className="text-white" />}
+            {isOpen ? (
+              <X size={24} className={scrolled || !isHomePage ? 'text-gray-700' : 'text-white'} />
+            ) : (
+              <Menu size={24} className={scrolled || !isHomePage ? 'text-gray-700' : 'text-white'} />
+            )}
           </button>
         </div>
 
         {/* Mobile Navigation */}
         {isOpen && (
-          <div className="md:hidden bg-black/95 backdrop-blur-sm border-t border-gray-800 py-4">
+          <div className="lg:hidden bg-white/95 backdrop-blur-sm border-t border-gray-200 py-4">
             {navItems.map((item) => (
               <Link
                 key={item.name}
                 to={item.path}
                 onClick={() => setIsOpen(false)}
-                className={`block px-4 py-2 text-sm font-medium transition-colors duration-200 hover:text-blue-400 ${
-                  location.pathname === item.path ? 'text-blue-400' : 'text-gray-300'
+                className={`block px-4 py-2 text-sm font-medium transition-colors duration-200 hover:text-[#1B9AAA] ${
+                  location.pathname === item.path ? 'text-[#1B9AAA]' : 'text-gray-700'
                 }`}
               >
                 {item.name}
               </Link>
             ))}
             <div className="px-4 py-2">
-              <button className="w-full bg-gradient-to-r from-blue-600 to-purple-600 text-white px-6 py-2 rounded-full hover:shadow-lg transition-all duration-200">
+              <button className="w-full bg-gradient-to-r from-[#1B9AAA] to-[#06D6A0] text-white px-6 py-2 rounded-full hover:shadow-lg transition-all duration-200">
                 Get Demo
               </button>
             </div>
