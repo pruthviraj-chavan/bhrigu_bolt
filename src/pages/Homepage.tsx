@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowRight, CheckCircle, Zap, Shield, Globe, Cpu, BarChart3, Users, Award, TrendingUp, Play, Sparkles, Brain, Layers, Database, Cloud, Star, Building, Factory, FlaskConical, Pill, Utensils, Microscope } from 'lucide-react';
+import { ArrowRight, CheckCircle, Zap, Shield, Globe, Cpu, BarChart3, Users, Award, TrendingUp, Play, Sparkles, Brain, Layers, Database, Cloud, Star, Building, Factory, FlaskConical, Pill, Utensils, Microscope, Bot, Code, Cog } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 export const Homepage: React.FC = () => {
@@ -99,7 +99,7 @@ export const Homepage: React.FC = () => {
           ))}
         </div>
 
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10 pt-16">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10 pt-20">
           <div className="max-w-7xl mx-auto">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
               {/* Left Content */}
@@ -399,6 +399,304 @@ export const Homepage: React.FC = () => {
                 </div>
               </motion.div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* AI-Driven Ecosystem Section */}
+      <section className="py-12 lg:py-20 bg-white relative overflow-hidden">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div 
+            className="max-w-4xl mx-auto text-center mb-12 lg:mb-16"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+          >
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6">
+              <span className="bg-gradient-to-r from-[#1B9AAA] to-[#06D6A0] bg-clip-text text-transparent">
+                AI-Driven Manufacturing Ecosystem
+              </span>
+            </h2>
+            <p className="text-lg lg:text-xl text-gray-600 leading-relaxed">
+              Our AI-Powered Ecosystem connects Compliance, Quality, and Manufacturing in one intelligent flow
+            </p>
+          </motion.div>
+          
+          <div className="relative max-w-4xl mx-auto">
+            {/* Central AI Hub */}
+            <motion.div 
+              className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-10"
+              initial={{ scale: 0 }}
+              whileInView={{ scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+            >
+              <div className="w-32 h-32 bg-gradient-to-r from-[#1B9AAA] to-[#06D6A0] rounded-full flex items-center justify-center shadow-2xl">
+                <Bot className="w-16 h-16 text-white" />
+              </div>
+              <div className="absolute inset-0 bg-gradient-to-r from-[#1B9AAA] to-[#06D6A0] rounded-full animate-ping opacity-20"></div>
+            </motion.div>
+
+            {/* Orbiting Modules */}
+            <div className="relative w-full h-96">
+              {[
+                { icon: Shield, label: 'Quality Control', angle: 0, color: 'from-[#06D6A0] to-[#40E0D0]' },
+                { icon: FileText, label: 'SOPs', angle: 60, color: 'from-[#40E0D0] to-[#1B9AAA]' },
+                { icon: BarChart3, label: 'Analytics', angle: 120, color: 'from-[#1B9AAA] to-[#06D6A0]' },
+                { icon: Cog, label: 'Automation', angle: 180, color: 'from-[#06D6A0] to-[#40E0D0]' },
+                { icon: Database, label: 'Data Hub', angle: 240, color: 'from-[#40E0D0] to-[#1B9AAA]' },
+                { icon: Code, label: 'Integration', angle: 300, color: 'from-[#1B9AAA] to-[#06D6A0]' }
+              ].map((module, index) => {
+                const radius = 140;
+                const x = Math.cos((module.angle * Math.PI) / 180) * radius;
+                const y = Math.sin((module.angle * Math.PI) / 180) * radius;
+                
+                return (
+                  <motion.div
+                    key={index}
+                    className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
+                    style={{ 
+                      transform: `translate(calc(-50% + ${x}px), calc(-50% + ${y}px))` 
+                    }}
+                    initial={{ opacity: 0, scale: 0 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: index * 0.2, duration: 0.6 }}
+                    whileHover={{ scale: 1.1 }}
+                  >
+                    <div className={`w-20 h-20 bg-gradient-to-r ${module.color} rounded-2xl flex items-center justify-center shadow-lg`}>
+                      <module.icon className="w-8 h-8 text-white" />
+                    </div>
+                    <div className="text-center mt-2">
+                      <span className="text-sm font-medium text-gray-700">{module.label}</span>
+                    </div>
+                    
+                    {/* Connecting Lines */}
+                    <svg className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 pointer-events-none" width="200" height="200">
+                      <line 
+                        x1="100" 
+                        y1="100" 
+                        x2={100 - x} 
+                        y2={100 - y} 
+                        stroke="#1B9AAA" 
+                        strokeWidth="2" 
+                        opacity="0.3"
+                        strokeDasharray="5,5"
+                      />
+                    </svg>
+                  </motion.div>
+                );
+              })}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Robotics Animation Section */}
+      <section className="py-12 lg:py-20 bg-gradient-to-br from-[#1B9AAA]/10 to-[#06D6A0]/10">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+            <motion.div
+              initial={{ opacity: 0, x: -50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+            >
+              <h2 className="text-3xl lg:text-4xl font-bold mb-6">
+                <span className="bg-gradient-to-r from-[#1B9AAA] to-[#06D6A0] bg-clip-text text-transparent">
+                  Robotic Process Automation
+                </span>
+              </h2>
+              <p className="text-lg text-gray-600 mb-8 leading-relaxed">
+                Intelligent robots working alongside humans to optimize manufacturing processes, ensure quality, and maintain compliance.
+              </p>
+              <div className="space-y-4">
+                {[
+                  'Automated quality inspections',
+                  'Predictive maintenance scheduling',
+                  'Real-time process optimization',
+                  'Compliance monitoring and reporting'
+                ].map((feature, index) => (
+                  <motion.div 
+                    key={index} 
+                    className="flex items-center space-x-3"
+                    initial={{ opacity: 0, x: -20 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: index * 0.1 }}
+                  >
+                    <CheckCircle className="w-5 h-5 text-[#06D6A0]" />
+                    <span className="text-gray-700">{feature}</span>
+                  </motion.div>
+                ))}
+              </div>
+            </motion.div>
+            
+            <motion.div 
+              className="relative"
+              initial={{ opacity: 0, x: 50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+            >
+              <div className="bg-white border border-gray-200 rounded-3xl p-8 shadow-2xl">
+                <div className="text-center">
+                  <motion.div
+                    className="text-8xl mb-4"
+                    animate={{ 
+                      rotate: [0, 10, -10, 0],
+                      scale: [1, 1.05, 1]
+                    }}
+                    transition={{ 
+                      duration: 3,
+                      repeat: Infinity,
+                      ease: "easeInOut"
+                    }}
+                  >
+                    🤖
+                  </motion.div>
+                  <h3 className="text-2xl font-semibold mb-4 text-gray-900">Smart Manufacturing Robot</h3>
+                  <div className="space-y-3">
+                    <div className="flex justify-between items-center p-3 bg-gray-50 rounded-lg">
+                      <span className="text-gray-600">Efficiency</span>
+                      <span className="text-[#06D6A0] font-semibold">98.5%</span>
+                    </div>
+                    <div className="flex justify-between items-center p-3 bg-gray-50 rounded-lg">
+                      <span className="text-gray-600">Uptime</span>
+                      <span className="text-[#1B9AAA] font-semibold">99.9%</span>
+                    </div>
+                    <div className="flex justify-between items-center p-3 bg-gray-50 rounded-lg">
+                      <span className="text-gray-600">Quality Score</span>
+                      <span className="text-[#40E0D0] font-semibold">99.7%</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* Programming & Code Animation Section */}
+      <section className="py-12 lg:py-20 bg-gray-50">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div 
+            className="max-w-4xl mx-auto text-center mb-12 lg:mb-16"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+          >
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6">
+              <span className="bg-gradient-to-r from-[#1B9AAA] to-[#06D6A0] bg-clip-text text-transparent">
+                Code-Driven Intelligence
+              </span>
+            </h2>
+            <p className="text-lg lg:text-xl text-gray-600 leading-relaxed">
+              Advanced algorithms and machine learning models powering intelligent manufacturing decisions
+            </p>
+          </motion.div>
+          
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+            <motion.div 
+              className="bg-gray-900 rounded-3xl p-6 lg:p-8 shadow-2xl overflow-hidden"
+              initial={{ opacity: 0, x: -50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+            >
+              <div className="flex items-center mb-4">
+                <div className="flex space-x-2">
+                  <div className="w-3 h-3 bg-red-500 rounded-full"></div>
+                  <div className="w-3 h-3 bg-yellow-500 rounded-full"></div>
+                  <div className="w-3 h-3 bg-green-500 rounded-full"></div>
+                </div>
+                <span className="ml-4 text-gray-400 text-sm">AI_Manufacturing_Engine.py</span>
+              </div>
+              <div className="font-mono text-sm space-y-2">
+                <motion.div 
+                  className="text-blue-400"
+                  initial={{ opacity: 0 }}
+                  whileInView={{ opacity: 1 }}
+                  transition={{ delay: 0.5 }}
+                >
+                  <span className="text-purple-400">def</span> optimize_production():
+                </motion.div>
+                <motion.div 
+                  className="text-green-400 ml-4"
+                  initial={{ opacity: 0 }}
+                  whileInView={{ opacity: 1 }}
+                  transition={{ delay: 0.7 }}
+                >
+                  # AI-powered optimization
+                </motion.div>
+                <motion.div 
+                  className="text-yellow-400 ml-4"
+                  initial={{ opacity: 0 }}
+                  whileInView={{ opacity: 1 }}
+                  transition={{ delay: 0.9 }}
+                >
+                  efficiency = predict_efficiency()
+                </motion.div>
+                <motion.div 
+                  className="text-cyan-400 ml-4"
+                  initial={{ opacity: 0 }}
+                  whileInView={{ opacity: 1 }}
+                  transition={{ delay: 1.1 }}
+                >
+                  quality = analyze_quality()
+                </motion.div>
+                <motion.div 
+                  className="text-pink-400 ml-4"
+                  initial={{ opacity: 0 }}
+                  whileInView={{ opacity: 1 }}
+                  transition={{ delay: 1.3 }}
+                >
+                  <span className="text-purple-400">return</span> optimize(efficiency, quality)
+                </motion.div>
+              </div>
+              <motion.div 
+                className="mt-4 text-green-400 text-sm"
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                transition={{ delay: 1.5 }}
+              >
+                ✓ Production optimized: 94.7% efficiency achieved
+              </motion.div>
+            </motion.div>
+            
+            <motion.div
+              initial={{ opacity: 0, x: 50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+            >
+              <h3 className="text-2xl lg:text-3xl font-bold mb-6 text-gray-900">
+                Intelligent Code Architecture
+              </h3>
+              <p className="text-lg text-gray-600 mb-8 leading-relaxed">
+                Our platform leverages cutting-edge programming paradigms to deliver real-time insights and automated decision-making.
+              </p>
+              <div className="space-y-4">
+                {[
+                  'Machine Learning Algorithms',
+                  'Real-time Data Processing',
+                  'Predictive Analytics Engine',
+                  'Automated Compliance Checks'
+                ].map((feature, index) => (
+                  <motion.div 
+                    key={index} 
+                    className="flex items-center space-x-3"
+                    initial={{ opacity: 0, x: 20 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: index * 0.1 }}
+                  >
+                    <Code className="w-5 h-5 text-[#1B9AAA]" />
+                    <span className="text-gray-700">{feature}</span>
+                  </motion.div>
+                ))}
+              </div>
+            </motion.div>
           </div>
         </div>
       </section>
